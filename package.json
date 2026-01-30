@@ -1,0 +1,20 @@
+{
+  "name": "qtrackai",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:frontend": "npm -w frontend run dev",
+    "dev:backend": "npm -w backend run dev",
+    "dev": "npm -w frontend run dev & npm -w backend run dev",
+    "build": "npm -w frontend run build",
+    "preview": "npm -w frontend run preview",
+    "lint": "npm -w frontend run lint"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
