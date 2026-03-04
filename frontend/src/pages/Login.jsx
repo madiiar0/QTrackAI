@@ -53,11 +53,11 @@ const Login = () => {
   return (
     <AuthLayout
       title="Welcome back"
-      subtitle="Sign in to access your QTrackAI workspace."
+      subtitle="Sign in to access your SynapAI workspace."
       showLogo={false}
       footer={
         <span>
-          New to QTrackAI?{' '}
+          New to SynapAI?{' '}
           <Link className={styles.link} to="/signup">
             Create an account
           </Link>
@@ -71,7 +71,7 @@ const Login = () => {
           name="email"
           value={formValues.email}
           onChange={handleChange}
-          placeholder="you@company.com"
+          placeholder="you@gmail.com"
           autoComplete="email"
           error={errors.email}
         />

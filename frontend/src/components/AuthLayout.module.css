@@ -41,7 +41,7 @@
 .blobTwo {
   width: 220px;
   height: 220px;
-  background: rgba(244, 114, 182, 0.2);
+  background: rgba(124, 58, 237, 0.16);
   bottom: 18%;
   right: 10%;
 }
@@ -49,7 +49,7 @@
 .blobThree {
   width: 180px;
   height: 180px;
-  background: rgba(56, 189, 248, 0.18);
+  background: rgba(99, 102, 241, 0.18);
   top: 55%;
   right: 25%;
 }

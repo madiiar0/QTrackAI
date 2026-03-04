@@ -1,37 +1,13 @@
 .page {
   min-height: 100vh;
-  padding: 40px clamp(20px, 5vw, 80px);
   background: linear-gradient(120deg, #f7f4ff 0%, #f8fafc 45%, #f1f5ff 100%);
 }
 
-.header {
+.content {
+  padding: 32px clamp(20px, 5vw, 80px) 40px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.brand img {
-  width: 72px;
-  height: 48px;
-  object-fit: contain;
-}
-
-.brandTitle {
-  font-family: var(--font-display);
-  font-weight: 600;
-}
-
-.brandSubtitle {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
+  flex-direction: column;
+  gap: 20px;
 }
 
 .banner {
@@ -105,18 +81,49 @@
   color: var(--color-accent);
 }
 
-@media (max-width: 600px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.infoCard {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+}
 
+.infoCard h3 {
+  font-size: 1rem;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.infoRow span:last-child {
+  color: var(--color-text);
+}
+
+.logoutButton {
+  align-self: flex-start;
+}
+
+@media (max-width: 600px) {
   .banner {
     flex-direction: column;
     align-items: flex-start;
   }
 
   .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .infoRow {
     flex-direction: column;
     align-items: flex-start;
   }

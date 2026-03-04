@@ -12,7 +12,7 @@ export const VERIFICATION_EMAIL_TEMPLATE = `<!DOCTYPE html>
           <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;background-color:#ffffff;border:1px solid #e5e5e5;border-radius:8px;">
             <tr>
               <td style="padding:20px 24px;border-bottom:1px solid #eeeeee;">
-                <div style="font-size:18px;font-weight:700;color:#111111;">QTrackAI</div>
+                <div style="font-size:18px;font-weight:700;color:#111111;">SynapAI</div>
               </td>
             </tr>
             <tr>
@@ -55,7 +55,7 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `<!DOCTYPE html>
           <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;background-color:#ffffff;border:1px solid #e5e5e5;border-radius:8px;">
             <tr>
               <td style="padding:20px 24px;border-bottom:1px solid #eeeeee;">
-                <div style="font-size:18px;font-weight:700;color:#111111;">QTrackAI</div>
+                <div style="font-size:18px;font-weight:700;color:#111111;">SynapAI</div>
               </td>
             </tr>
             <tr>
@@ -104,7 +104,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `<!DOCTYPE html>
           <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;background-color:#ffffff;border:1px solid #e5e5e5;border-radius:8px;">
             <tr>
               <td style="padding:20px 24px;border-bottom:1px solid #eeeeee;">
-                <div style="font-size:18px;font-weight:700;color:#111111;">QTrackAI</div>
+                <div style="font-size:18px;font-weight:700;color:#111111;">SynapAI</div>
               </td>
             </tr>
             <tr>

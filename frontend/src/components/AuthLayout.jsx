@@ -38,13 +38,6 @@ const AuthLayout = ({ title, subtitle, children, footer, showLogo = true }) => {
 
       <div className={styles.card}>
         <header className={styles.header}>
-          {showLogo ? (
-            <img
-              src="/QTrackAI_logo.png"
-              alt="QTrackAI"
-              className={styles.logo}
-            />
-          ) : null}
           <div>
             <h1 className={styles.title}>{title}</h1>
             {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}

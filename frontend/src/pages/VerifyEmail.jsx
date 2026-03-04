@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AuthLayout from '../components/AuthLayout';
 import OtpInput from '../components/OtpInput';
 import Button from '../components/Button';
@@ -11,7 +11,7 @@ import styles from './AuthPages.module.css';
 const VerifyEmail = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { verifyEmail, isVerified } = useAuth();
+  const { verifyEmail, isVerified, logout } = useAuth();
 
   const [code, setCode] = useState('');
   const [status, setStatus] = useState({
@@ -46,10 +46,19 @@ const VerifyEmail = () => {
     }
   };
 
+  const handleReenterEmail = async (event) => {
+    event.preventDefault();
+    try {
+      await logout();
+    } finally {
+      navigate('/signup');
+    }
+  };
+
   return (
     <AuthLayout
       title="Verify your email"
-      subtitle="Secure your QTrackAI account in seconds."
+      subtitle="Secure your SynapAI account in seconds."
       showLogo={false}
       footer={
         <span className={styles.helperText}>
@@ -64,6 +73,14 @@ const VerifyEmail = () => {
           Verify email
         </Button>
       </form>
+      <div className={styles.center}>
+        <span className={styles.helperText}>
+          Entered the wrong email?{' '}
+          <Link className={styles.link} to="/signup" onClick={handleReenterEmail}>
+            Re-enter email
+          </Link>
+        </span>
+      </div>
     </AuthLayout>
   );
 };

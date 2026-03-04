@@ -57,7 +57,7 @@ const ForgotPassword = () => {
           name="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          placeholder="you@company.com"
+          placeholder="you@gmail.com"
           autoComplete="email"
         />
         <Alert variant={status.type}>{status.message}</Alert>

@@ -59,7 +59,7 @@ const Signup = () => {
   return (
     <AuthLayout
       title="Create your account"
-      subtitle="QTrackAI keeps your learning analytics sharp and secure."
+      subtitle="SynapAI keeps your learning analytics sharp and secure."
       showLogo={false}
       footer={
         <span>
@@ -86,7 +86,7 @@ const Signup = () => {
           name="email"
           value={formValues.email}
           onChange={handleChange}
-          placeholder="you@company.com"
+          placeholder="you@gmail.com"
           autoComplete="email"
           error={errors.email}
         />

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/Button';
+import AppHeader from '../components/AppHeader';
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
@@ -28,40 +29,50 @@ const Dashboard = () => {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.brand}>
-          <img src="/QTrackAI_Logo.png" alt="QTrackAI" />
-          <div>
-            <p className={styles.brandTitle}>QTrackAI</p>
-            <p className={styles.brandSubtitle}>Secure analytics dashboard</p>
+      <AppHeader />
+
+      <main className={styles.content}>
+        {!isVerified ? (
+          <div className={styles.banner}>
+            <p>
+              Your email is not verified yet. Verify to unlock full access.
+            </p>
+            <Link className={styles.bannerLink} to="/verify-email">
+              Verify email
+            </Link>
+          </div>
+        ) : null}
+        <div className={styles.card}>
+          <div className={styles.avatar}>{initials}</div>
+          <div className={styles.details}>
+            <h2>{user?.name || user?.email || 'SynapAI Member'}</h2>
+            <p>{user?.email}</p>
+            <span className={`${styles.badge} ${isVerified ? styles.verified : styles.pending}`}>
+              {isVerified ? 'Verified account' : 'Pending verification'}
+            </span>
           </div>
         </div>
-        <Button variant="secondary" onClick={handleLogout}>
-          Log out
-        </Button>
-      </header>
-
-      {!isVerified ? (
-        <div className={styles.banner}>
-          <p>
-            Your email is not verified yet. Verify to unlock full access.
-          </p>
-          <Link className={styles.bannerLink} to="/verify-email">
-            Verify email
-          </Link>
+        <div className={styles.infoCard}>
+          <h3>Account info</h3>
+          <div className={styles.infoRow}>
+            <span>Email</span>
+            <span>{user?.email || '—'}</span>
+          </div>
+          <div className={styles.infoRow}>
+            <span>Status</span>
+            <span>{isVerified ? 'Verified' : 'Pending verification'}</span>
+          </div>
+          <div className={styles.infoRow}>
+            <span>Joined</span>
+            <span>
+              {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : '—'}
+            </span>
+          </div>
+          <Button variant="secondary" onClick={handleLogout} className={styles.logoutButton}>
+            Log out
+          </Button>
         </div>
-      ) : null}
-
-      <div className={styles.card}>
-        <div className={styles.avatar}>{initials}</div>
-        <div className={styles.details}>
-          <h2>{user?.name || 'QTrackAI Member'}</h2>
-          <p>{user?.email}</p>
-          <span className={`${styles.badge} ${isVerified ? styles.verified : styles.pending}`}>
-            {isVerified ? 'Verified account' : 'Pending verification'}
-          </span>
-        </div>
-      </div>
+      </main>
     </div>
   );
 };

@@ -1,0 +1,191 @@
+.page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #f7f4ff 0%, #f8fafc 45%, #f1f5ff 100%);
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(14px);
+  opacity: 0.3;
+  will-change: transform;
+}
+
+.blobOne {
+  width: 320px;
+  height: 320px;
+  background: rgba(109, 40, 217, 0.2);
+  top: 8%;
+  left: -4%;
+  animation: floatOne 12s ease-in-out infinite;
+}
+
+.blobTwo {
+  width: 260px;
+  height: 260px;
+  background: rgba(109, 40, 217, 0.18);
+  bottom: 6%;
+  right: -6%;
+  animation: floatTwo 13s ease-in-out infinite;
+}
+
+.blobThree {
+  width: 220px;
+  height: 220px;
+  background: rgba(124, 58, 237, 0.18);
+  top: 40%;
+  right: 12%;
+  animation: floatThree 14s ease-in-out infinite;
+}
+
+.blobFour {
+  width: 200px;
+  height: 200px;
+  background: rgba(99, 102, 241, 0.18);
+  bottom: -2%;
+  left: -4%;
+  animation: floatFour 12.5s ease-in-out infinite;
+}
+
+.blobFive {
+  width: 180px;
+  height: 180px;
+  background: rgba(99, 102, 241, 0.14);
+  top: 18%;
+  right: 36%;
+  animation: floatFive 13.5s ease-in-out infinite;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 88px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.actions {
+  --start-width: 220px;
+  --edit-size: 56px;
+  --gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap);
+  transform: translateY(-24px);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.startButton {
+  width: var(--start-width);
+  height: 56px;
+  font-size: 1rem;
+}
+
+.iconButton {
+  width: var(--edit-size);
+  height: var(--edit-size);
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton span {
+  display: inline-flex;
+}
+
+.iconButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+.collectionButton {
+  width: calc(var(--start-width) + var(--gap));
+  height: 56px;
+}
+
+@media (max-width: 520px) {
+  .actions {
+    --start-width: 180px;
+    --edit-size: 52px;
+    --gap: 12px;
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes floatOne {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(18px, 12px) scale(1.04);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes floatTwo {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-16px, -10px) scale(1.03);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes floatThree {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(12px, -18px) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes floatFour {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -12px) scale(1.04);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes floatFive {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-12px, 16px) scale(1.03);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}

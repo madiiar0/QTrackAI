@@ -11,7 +11,7 @@ export const sendVerificationEmail = async (email, verificationToken) => {
         const response = await mailtrapClient.send({
             from: sender,
             to: receipt,
-            subject: "QTrackAI: Verify Your Email!",
+            subject: "SynapAI: Verify Your Email!",
             html: VERIFICATION_EMAIL_TEMPLATE.replace("{verificationToken}", verificationToken),
             category: "EmailVerification",
         });
@@ -27,7 +27,7 @@ export const sendForgotPasswordEmail = async (email, resetURL) => {
         const response = await mailtrapClient.send({
             from: sender,
             to: receipt,
-            subject: "QTrackAI: Reset your password!",
+            subject: "SynapAI: Reset your password!",
             html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL),
             category: "resetPassword",
         });
@@ -43,7 +43,7 @@ export const sendResetPasswordSuccessEmail = async (email) => {
         const response = await mailtrapClient.send({
             from: sender,
             to: receipt,
-            subject: "QTrackAI: Password reset successfully!",
+            subject: "SynapAI: Password reset successfully!",
             html: PASSWORD_RESET_SUCCESS_TEMPLATE,
             category: "resetPassword",
         });

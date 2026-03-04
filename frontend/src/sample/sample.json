@@ -1,0 +1,29 @@
+{
+  "exam": {
+    "title": "Calculus Quiz 1",
+    "audienceLevel": "Foundation Year",
+    "numQuestions": 20,
+    "totalScore": 60,
+    "outputFormat": "pdf",
+    "includeFullSolutions": true
+  },
+  "topics": [
+    {
+      "topicId": "T1",
+      "title": "Limits",
+      "description": "one-sided limits, continuity, algebraic limits",
+      "materials": {
+        "fileIds": ["file_slides_01", "file_ws_01"]
+      }
+    },...
+  ],
+  "questions": [
+    {
+      "qid": "Q1",
+      "topicId": "T1",
+      "difficulty": "easy",
+      "type": "short_answer",
+      "points": 4
+    }, ...
+  ]
+}

@@ -1,9 +1,9 @@
 import styles from './Button.module.css';
 
-const Button = ({ children, variant = 'primary', isLoading, ...props }) => {
+const Button = ({ children, variant = 'primary', isLoading, className = '', ...props }) => {
   return (
     <button
-      className={`${styles.button} ${styles[variant]} ${isLoading ? styles.loading : ''}`}
+      className={`${styles.button} ${styles[variant]} ${isLoading ? styles.loading : ''} ${className}`}
       {...props}
     >
       <span>{children}</span>
