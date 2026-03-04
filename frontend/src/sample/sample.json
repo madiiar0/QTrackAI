@@ -2,7 +2,7 @@
   "exam": {
     "title": "Calculus Quiz 1",
     "audienceLevel": "Foundation Year",
-    "numQuestions": 20,
+    "totalQuestions": 20,
     "totalScore": 60,
     "outputFormat": "pdf",
     "includeFullSolutions": true

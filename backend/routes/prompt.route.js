@@ -4,7 +4,7 @@ import {promptGet, promptPost} from "../controllers/prompt.controllers.js";
 
 const router = express.Router();
 
-router.post('/', promptPost);
-router.get('/', promptGet);
+router.post('/', verifyToken, promptPost);
+router.get('/', verifyToken, promptGet);
 
 export default router;
