@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { RotateCw } from 'lucide-react';
 import AppHeader from '../components/AppHeader';
 import OverviewSection from './questionnaire/OverviewSection';
 import TopicsSection from './questionnaire/TopicsSection';
@@ -29,6 +30,8 @@ const Quiz = () => {
   const [unlockedMax, setUnlockedMax] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState('');
+  const [sectionNextHandler, setSectionNextHandler] = useState(null);
+  const [sectionActions, setSectionActions] = useState(null);
   const [formData, setFormData] = useState({
     exam: {
       title: '',
@@ -194,13 +197,39 @@ const Quiz = () => {
     }
   };
 
+  const registerNextHandler = useCallback((handler) => {
+    setSectionNextHandler(() => (typeof handler === 'function' ? handler : null));
+  }, []);
+
+  const registerSectionActions = useCallback((actions) => {
+    setSectionActions(actions || null);
+  }, []);
+
   const handleNext = async () => {
     if (isLast) return;
     if (!canAdvance) return;
+    setSaveError('');
 
     if (isOverview) {
       const ok = await saveOverview();
       if (!ok) return;
+    }
+
+    if (!isOverview && sectionNextHandler) {
+      setIsSaving(true);
+      try {
+        const result = await sectionNextHandler();
+        if (!result?.ok) {
+          setSaveError(result?.error || 'Unable to save section. Please try again.');
+          return;
+        }
+      } catch (error) {
+        console.error('Failed to save section', error);
+        setSaveError('Unable to save section. Please try again.');
+        return;
+      } finally {
+        setIsSaving(false);
+      }
     }
 
     const nextIndex = Math.min(currentIndex + 1, sections.length - 1);
@@ -251,18 +280,42 @@ const Quiz = () => {
                     onExamChange={updateExam}
                     topics={formData.topics}
                     onTopicsUpdate={handleTopicsUpdate}
+                    registerNextHandler={registerNextHandler}
+                    registerSectionActions={registerSectionActions}
+                    isSaving={isSaving}
                   />
                 ) : null}
               </div>
               <div className={styles.sectionFooter}>
                 {saveError ? <p className={styles.saveError}>{saveError}</p> : null}
+                {sectionActions?.show ? (
+                  <>
+                    <button
+                      type="button"
+                      className={styles.roundActionButton}
+                      onClick={sectionActions.onReset}
+                      disabled={isSaving || sectionActions.disable}
+                      aria-label="Reset to even distribution"
+                    >
+                      <RotateCw size={16} />
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.nextButton} ${styles.secondaryActionButton}`}
+                      onClick={sectionActions.onRandomize}
+                      disabled={isSaving || sectionActions.disable}
+                    >
+                      Randomize
+                    </button>
+                  </>
+                ) : null}
                 <button
                   type="button"
                   className={styles.nextButton}
                   onClick={handleNext}
                   disabled={!canAdvance || isSaving}
                 >
-                  {isLast ? 'Generate an Exam' : 'Next section'}
+                  {isSaving ? 'Saving…' : isLast ? 'Generate an Exam' : 'Next section'}
                 </button>
               </div>
             </section>

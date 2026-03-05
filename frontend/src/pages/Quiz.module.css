@@ -185,6 +185,7 @@
 }
 
 .nextButton {
+  min-width: 150px;
   padding: 12px 20px;
   border-radius: 999px;
   border: none;
@@ -200,6 +201,50 @@
 .nextButton:hover {
   transform: translateY(-1px);
   box-shadow: 0 16px 28px rgba(37, 99, 235, 0.32);
+}
+
+.secondaryActionButton {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-text);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: none;
+}
+
+.secondaryActionButton:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.roundActionButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.roundActionButton:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.roundActionButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.roundActionButton:disabled,
+.secondaryActionButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .nextButton:focus-visible {
@@ -317,6 +362,96 @@
   background: rgba(255, 255, 255, 0.6);
   color: var(--color-text-muted);
   text-align: center;
+}
+
+.topicDistributionInfo {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-muted);
+}
+
+.topicDistributionTableWrap {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+}
+
+.topicDistributionTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.topicDistributionTable th,
+.topicDistributionTable td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  border-right: 1px solid rgba(226, 232, 240, 0.9);
+  text-align: center;
+}
+
+.topicDistributionTable th:last-child,
+.topicDistributionTable td:last-child {
+  border-right: none;
+}
+
+.topicDistributionTable th {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.emphasisHeader {
+  font-weight: 700;
+}
+
+.topicDistributionTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.topicTitleCell {
+  text-align: center !important;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.topicCountInput {
+  width: 90px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: #fff;
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: center;
+}
+
+.topicCountInput:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.readOnlyCell {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.totalAccentCell {
+  font-weight: 700;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.totalRow td {
+  font-weight: 700;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-text);
 }
 
 .modalOverlay {
