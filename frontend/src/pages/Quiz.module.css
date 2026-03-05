@@ -147,8 +147,20 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.field textarea {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
 .field input:focus-visible,
-.field select:focus-visible {
+.field select:focus-visible,
+.field textarea:focus-visible {
   outline: none;
   border-color: var(--color-accent);
   box-shadow: 0 0 0 3px var(--color-accent-soft);
@@ -160,8 +172,16 @@
 
 .sectionFooter {
   display: flex;
+  align-items: center;
+  gap: 12px;
   justify-content: flex-end;
   padding-top: 16px;
+}
+
+.saveError {
+  margin-right: auto;
+  color: #b91c1c;
+  font-size: 0.9rem;
 }
 
 .nextButton {
@@ -185,4 +205,194 @@
 .nextButton:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.addTopicButton {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  background: transparent;
+  color: var(--color-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.addTopicButton:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
+}
+
+.topicsStack {
+  display: grid;
+  gap: 12px;
+}
+
+.topicCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+}
+
+.topicActions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topicMeta h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.topicMeta p {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.topicBadge,
+.topicBadgeMuted {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.topicBadge {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1d4ed8;
+}
+
+.topicBadgeMuted {
+  background: rgba(148, 163, 184, 0.16);
+  color: var(--color-text-muted);
+}
+
+.topicDeleteButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(100, 116, 139, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.topicDeleteButton:hover {
+  transform: translateY(-1px);
+  color: #b91c1c;
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.topicDeleteButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.topicDeleteButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.topicEmpty {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 50;
+}
+
+.modalCard {
+  width: min(520px, 92vw);
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 255, 0.95) 60%, rgba(255, 255, 255, 0.95) 100%);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+  padding: 24px;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1.2rem;
+}
+
+.modalHeader p {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+}
+
+.modalBody {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modalActions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modalCancel,
+.modalConfirm {
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.modalCancel {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(148, 163, 184, 0.35);
+  color: var(--color-text);
+}
+
+.modalConfirm {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
+}
+
+.modalConfirm:disabled,
+.modalCancel:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.modalError {
+  color: #b91c1c;
+  font-size: 0.9rem;
 }

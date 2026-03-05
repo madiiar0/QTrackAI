@@ -1,7 +1,7 @@
 .button {
-  height: 48px;
+  height: 46px;
   padding: 0 18px;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   border: 1px solid transparent;
   font-weight: 600;
   font-size: 0.95rem;
@@ -23,7 +23,7 @@
 .primary {
   background: var(--color-accent);
   color: #fff;
-  box-shadow: 0 12px 24px rgba(109, 40, 217, 0.25);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
 }
 
 .primary:hover:not(:disabled) {
@@ -32,9 +32,10 @@
 }
 
 .secondary {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(148, 163, 184, 0.4);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(148, 163, 184, 0.35);
   color: var(--color-text);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
 }
 
 .secondary:hover:not(:disabled) {

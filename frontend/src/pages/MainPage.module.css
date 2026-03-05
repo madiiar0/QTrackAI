@@ -5,19 +5,24 @@
   background: linear-gradient(120deg, #f7f4ff 0%, #f8fafc 45%, #f1f5ff 100%);
 }
 
-.background {
+.page::before {
+  content: '';
   position: absolute;
   inset: 0;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(109, 40, 217, 0.08), transparent 35%),
+    radial-gradient(circle at 88% 22%, rgba(37, 99, 235, 0.08), transparent 38%),
+    radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.06), transparent 40%);
   pointer-events: none;
-  z-index: 0;
+  opacity: 0.9;
+}
+
+.background {
+  display: none;
 }
 
 .blob {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(14px);
-  opacity: 0.3;
-  will-change: transform;
+  display: none;
 }
 
 .blobOne {
@@ -83,7 +88,12 @@
   flex-direction: column;
   align-items: center;
   gap: var(--gap);
-  transform: translateY(-24px);
+  padding: 28px;
+  border-radius: 20px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 255, 0.92) 60%, rgba(255, 255, 255, 0.9) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+  transform: translateY(-12px);
 }
 
 .row {
@@ -126,7 +136,17 @@
     --start-width: 180px;
     --edit-size: 52px;
     --gap: 12px;
-    transform: translateY(-16px);
+    transform: translateY(-8px);
+  }
+
+  .row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .startButton,
+  .collectionButton {
+    width: 100%;
   }
 }
 
