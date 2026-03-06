@@ -7,6 +7,7 @@ const examSchema = new mongoose.Schema({
     totalScore: Number,
     outputFormat: {type: String, enum: ["pdf", "latex"], default: "pdf"},
     includeFullSolution: {type: Boolean, default: true},
+    includeSpaceForWork: {type: Boolean, default: false},
 })
 
 const topicsSchema = new mongoose.Schema({

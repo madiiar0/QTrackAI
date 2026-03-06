@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { RotateCw } from 'lucide-react';
+import { Brush, RotateCw } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import AppHeader from '../components/AppHeader';
 import OverviewSection from './questionnaire/OverviewSection';
 import TopicsSection from './questionnaire/TopicsSection';
@@ -11,6 +12,7 @@ import promptApi from '../api/prompt';
 import styles from './Quiz.module.css';
 
 const Quiz = () => {
+  const navigate = useNavigate();
   const sections = useMemo(
     () => [
       { id: 'overview', label: 'Overview', component: OverviewSection },
@@ -206,7 +208,6 @@ const Quiz = () => {
   }, []);
 
   const handleNext = async () => {
-    if (isLast) return;
     if (!canAdvance) return;
     setSaveError('');
 
@@ -230,6 +231,12 @@ const Quiz = () => {
       } finally {
         setIsSaving(false);
       }
+    }
+
+    if (isLast) {
+      await saveProgressStatus(currentIndex);
+      navigate('/results');
+      return;
     }
 
     const nextIndex = Math.min(currentIndex + 1, sections.length - 1);
@@ -293,19 +300,23 @@ const Quiz = () => {
                     <button
                       type="button"
                       className={styles.roundActionButton}
-                      onClick={sectionActions.onReset}
+                      onClick={sectionActions.onRoundAction}
                       disabled={isSaving || sectionActions.disable}
-                      aria-label="Reset to even distribution"
+                      aria-label={sectionActions.roundAriaLabel || 'Section action'}
                     >
-                      <RotateCw size={16} />
+                      {sectionActions.roundIcon === 'brush' ? (
+                        <Brush size={16} />
+                      ) : (
+                        <RotateCw size={16} />
+                      )}
                     </button>
                     <button
                       type="button"
                       className={`${styles.nextButton} ${styles.secondaryActionButton}`}
-                      onClick={sectionActions.onRandomize}
+                      onClick={sectionActions.onSecondaryAction}
                       disabled={isSaving || sectionActions.disable}
                     >
-                      Randomize
+                      {sectionActions.secondaryLabel || 'Randomize'}
                     </button>
                   </>
                 ) : null}

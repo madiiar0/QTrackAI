@@ -276,8 +276,11 @@ const TopicDifficultySection = ({
     registerSectionActions({
       show: true,
       disable: isLoading || !!loadError || rowsWithTotals.length === 0 || isSaving,
-      onReset: handleResetToEven,
-      onRandomize: handleRandomize,
+      roundIcon: 'rotate',
+      roundAriaLabel: 'Reset to even distribution',
+      onRoundAction: handleResetToEven,
+      secondaryLabel: 'Randomize',
+      onSecondaryAction: handleRandomize,
     });
     return () => registerSectionActions(null);
   }, [
