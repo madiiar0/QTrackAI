@@ -7,6 +7,7 @@ import { connectDB } from "../db/connectDB.js";
 import authRoutes from "../routes/auth.route.js";
 import promptRoutes from "../routes/prompt.route.js";
 import filesRoutes from "../routes/files.route.js";
+import generateRoutes from "../routes/generate.route.js";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/prompt", promptRoutes);
 app.use("/api/files", filesRoutes)
+app.use("/api/generate", generateRoutes)
 
 const startServer = async () => {
   await connectDB();

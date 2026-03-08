@@ -15,6 +15,15 @@ const topicsSchema = new mongoose.Schema({
     title: {type: String},
     description: {type: String},
     materials: {type: [String, String]},
+    easySampleQuestion: {type: String, default: ""},
+    easySampleQuestionSolution: {type: String, default: ""},
+    easySampleQuestionSource: {type: String, default: ""},
+    mediumSampleQuestion: {type: String, default: ""},
+    mediumSampleQuestionSolution: {type: String, default: ""},
+    mediumSampleQuestionSource: {type: String, default: ""},
+    hardSampleQuestion: {type: String, default: ""},
+    hardSampleQuestionSolution: {type: String, default: ""},
+    hardSampleQuestionSource: {type: String, default: ""},
 })
 
 const questionsSchema = new mongoose.Schema({
@@ -23,6 +32,8 @@ const questionsSchema = new mongoose.Schema({
     difficulty: {type: String, enum: ['easy', 'medium', 'hard']},
     questionType: {type: String, enum: ['Multiple choice', 'Short answer', 'Numeric answer', 'Proof/Derivation', 'Matching', 'True/False'], default: "Short answer"},
     points: Number,
+    questionSample: {type: String, default: ""},
+    questionSampleSolution: {type: String, default: ""},
 })
 
 const promptSchema = new mongoose.Schema({
