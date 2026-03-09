@@ -1,0 +1,169 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 2112 >>
+stream
+BT
+/F1 12 Tf
+48 790 Td
+16 TL
+(Probability) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Topic: Probability 1) Tj
+T*
+() Tj
+T*
+(1. Prove that when a fair six-sided die is rolled, the probability of obtaining an even number) Tj
+T*
+(is 1/2.) Tj
+T*
+() Tj
+T*
+(2. A fair six-sided die is rolled once. What is the probability that the result is an even) Tj
+T*
+(number?) Tj
+T*
+() Tj
+T*
+(3. Two fair spinners each have four faces numbered 1 to 4. The spinners are spun together and) Tj
+T*
+(the sum of the numbers indicated on the two spinners is recorded. Which of the following gives) Tj
+T*
+(the correct probabilities for \(a\) the sum being exactly 5 and \(b\) the sum being greater than 5?) Tj
+T*
+(A\) Exactly 5: 1/4; More than 5: 3/8) Tj
+T*
+(B\) Exactly 5: 1/8; More than 5: 1/4) Tj
+T*
+(C\) Exactly 5: 1/2; More than 5: 1/2) Tj
+T*
+(D\) Exactly 5: 1/4; More than 5: 1/2) Tj
+T*
+() Tj
+T*
+(4. A survey of 79 families found that 22 families own cats, 27 families own dogs, and 7) Tj
+T*
+(families own both cats and dogs. A family is selected at random. Which of the following) Tj
+T*
+(fractions represents the probability that the selected family does NOT own either a cat or a) Tj
+T*
+(dog?) Tj
+T*
+(A\) 37/79) Tj
+T*
+(B\) 20/79) Tj
+T*
+(C\) 15/79) Tj
+T*
+(D\) 7/79) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Topic: Probability 2) Tj
+T*
+() Tj
+T*
+(5. Events A and B are independent, with P\(A\) = 1/3 and P\(B\) = 1/5. Compute the following) Tj
+T*
+(probabilities: a\) P\(A ∩ B\) b\) P\(A ∩ B'\) c\) P\(A' ∩ B'\).) Tj
+T*
+() Tj
+T*
+(6. An urn contains 2 white and 4 black balls. Four balls are drawn consecutively without) Tj
+T*
+(replacement. What is the probability that the first two balls drawn are white and the next two) Tj
+T*
+(balls drawn are black?) Tj
+T*
+(A\) 1/15) Tj
+T*
+(B\) 1/10) Tj
+T*
+(C\) 1/12) Tj
+T*
+(D\) 1/20) Tj
+T*
+() Tj
+T*
+(7. When coin A is flipped it comes up heads with probability 1/4, whereas when coin B is) Tj
+T*
+(flipped it comes up heads with probability 3/4. Suppose that one of these coins is randomly) Tj
+T*
+(chosen and is flipped twice. If both flips land heads, what is the probability that coin B was) Tj
+T*
+(the one flipped?) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 375 >>
+stream
+BT
+/F1 12 Tf
+48 790 Td
+16 TL
+(A\) 1/2) Tj
+T*
+(B\) 1/4) Tj
+T*
+(C\) 9/10) Tj
+T*
+(D\) 3/8) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Topic: Binomial Expansion) Tj
+T*
+() Tj
+T*
+(8. What is the coefficient of the x^3 term in the expansion of \(1 + x\)^7?) Tj
+T*
+() Tj
+T*
+(9. The coefficient of x^2 in the expansion of \(1 + 2x\)^5 is 80.) Tj
+T*
+() Tj
+T*
+(10. [Question text missing]) Tj
+T*
+() Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000191 00000 n 
+0000002355 00000 n 
+0000002481 00000 n 
+0000002907 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+3033
+%%EOF

@@ -9,6 +9,7 @@ import QuestionTypesSection from './questionnaire/QuestionTypesSection';
 import ScoreDistributionSection from './questionnaire/ScoreDistributionSection';
 import OutputFormatSection from './questionnaire/OutputFormatSection';
 import promptApi from '../api/prompt';
+import generateApi from '../api/generate';
 import styles from './Quiz.module.css';
 
 const Quiz = () => {
@@ -234,8 +235,23 @@ const Quiz = () => {
     }
 
     if (isLast) {
-      await saveProgressStatus(currentIndex);
-      navigate('/results');
+      setIsSaving(true);
+      try {
+        const { data } = await generateApi.post('/');
+        const jobId = data?.jobId;
+        if (!jobId) {
+          setSaveError('Generation started but job id is missing. Please try again.');
+          return;
+        }
+
+        window.sessionStorage.setItem('latestGenerationJobId', String(jobId));
+        navigate('/collection', { state: { jobId: String(jobId) } });
+      } catch (error) {
+        setSaveError('Unable to start generation. Please try again.');
+        console.error('Failed to start generation', error);
+      } finally {
+        setIsSaving(false);
+      }
       return;
     }
 

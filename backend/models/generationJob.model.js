@@ -12,6 +12,7 @@ const generationJobSchema = new mongoose.Schema(
     progress: { type: Number, default: 0 },
     currentStep: { type: String, default: "queued" },
     error: { type: String, default: null },
+    resultFileId: { type: String, default: null },
   },
   { timestamps: true }
 );

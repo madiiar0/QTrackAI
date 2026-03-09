@@ -1,0 +1,171 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 2101 >>
+stream
+BT
+/F1 12 Tf
+48 790 Td
+16 TL
+(Probability) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Topic: Probability 1) Tj
+T*
+() Tj
+T*
+(1. Prove that the probability of obtaining an even number when a fair six-sided die is rolled) Tj
+T*
+(is 1/2.) Tj
+T*
+() Tj
+T*
+(2. What is the probability of rolling a number greater than 4 on a fair six-sided die?) Tj
+T*
+() Tj
+T*
+(3. Two fair spinners each have four faces numbered 1‑4. The spinners are spun together and the) Tj
+T*
+(sum of the numbers indicated on the two spinners is recorded. Which of the following correctly) Tj
+T*
+(gives \(a\) the probability that the sum is exactly 5 and \(b\) the probability that the sum is) Tj
+T*
+(greater than 5?) Tj
+T*
+(A\) 1/4 and 3/8) Tj
+T*
+(B\) 1/3 and 1/2) Tj
+T*
+(C\) 1/2 and 5/8) Tj
+T*
+(D\) 3/4 and 1/2) Tj
+T*
+() Tj
+T*
+(4. A veterinarian surveyed 100 of her clients. The pet ownership data are: 25 own dogs; 15 own) Tj
+T*
+(dogs and cats; 11 own dogs and tropical fish; 53 own cats; 10 own cats and tropical fish; 7 own) Tj
+T*
+(dogs, cats and tropical fish; 40 own tropical fish. If a client is chosen at random, what is) Tj
+T*
+(the probability that the client does NOT own a dog, a cat, or a tropical fish? \(Express your) Tj
+T*
+(answer as a decimal.\)) Tj
+T*
+(A\) 0.06) Tj
+T*
+(B\) 0.60) Tj
+T*
+(C\) 0.11) Tj
+T*
+(D\) 0.23) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Topic: Probability 2) Tj
+T*
+() Tj
+T*
+(5. Events A and B are independent, with P\(A\)=1/3 and P\(B\)=1/5. Find \(a\) P\(A ∩ B\); \(b\) P\(A ∩) Tj
+T*
+(B'\); \(c\) P\(A' ∩ B'\).) Tj
+T*
+() Tj
+T*
+(6. A bag contains seven green beads and five blue beads. A bead is taken from the bag at) Tj
+T*
+(random, the color is recorded and it is not replaced. A second bead is then taken from the bag) Tj
+T*
+(and its color is recorded. Find the probability that one bead is green and another bead is) Tj
+T*
+(blue.) Tj
+T*
+(A\) 35/132) Tj
+T*
+(B\) 35/66) Tj
+T*
+(C\) 5/11) Tj
+T*
+(D\) 0.5) Tj
+T*
+() Tj
+T*
+(7. When coin A is flipped it comes up heads with probability 1/4, whereas coin B comes up heads) Tj
+T*
+(with probability 3/4. One of these coins is chosen at random and flipped twice. Given that both) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 481 >>
+stream
+BT
+/F1 12 Tf
+48 790 Td
+16 TL
+(flips land heads, what is the probability that the chosen coin was coin B?) Tj
+T*
+(A\) 1/2) Tj
+T*
+(B\) 3/5) Tj
+T*
+(C\) 9/10) Tj
+T*
+(D\) 2/3) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Topic: Binomial Expansion) Tj
+T*
+() Tj
+T*
+(8. [Question text missing]) Tj
+T*
+() Tj
+T*
+(9. The binomial expansion of \(x + 1/x\)^5 contains a constant term.) Tj
+T*
+() Tj
+T*
+(10. Find the coefficient of the term containing x^5 in the binomial expansion of \(2x - 1/x\)^9.) Tj
+T*
+() Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000191 00000 n 
+0000002344 00000 n 
+0000002470 00000 n 
+0000003002 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+3128
+%%EOF

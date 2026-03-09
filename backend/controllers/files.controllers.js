@@ -1,7 +1,7 @@
 import fs from "fs";
 import fsp from "fs/promises";
-import { nanoid } from "nanoid";
 import FileModel from "../models/files.model.js";
+import { saveFileMetadata } from "../services/files.service.js";
 
 export const filesPost = async (req, res) => {
     try {
@@ -15,13 +15,9 @@ export const filesPost = async (req, res) => {
             return res.status(400).json({ success: false, message: "File must be provided!" });
         }
 
-        const publicId = `f_${nanoid(24)}`;
-        const storedPath = file.path;
-
-        const doc = await FileModel.create({
-            publicId,
-            ownerId: String(userId),
-            storedPath,
+        const doc = await saveFileMetadata({
+            ownerId: userId,
+            storedPath: file.path,
             originalName: file.originalname,
             mimeType: file.mimetype,
             sizeBytes: file.size

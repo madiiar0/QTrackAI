@@ -1,0 +1,320 @@
+{
+  "success": true,
+  "prompt": {
+    "_id": "69ad6f0cad29386b761cd2bb",
+    "ownerId": "697e2dbc02a6fcef13e9780c",
+    "__v": 6,
+    "exam": {
+      "title": "Probability",
+      "audience": "Foundation Year",
+      "totalQuestions": 10,
+      "totalScore": 100,
+      "outputFormat": "pdf",
+      "includeFullSolution": true,
+      "includeSpaceForWork": false,
+      "_id": "69ad6f0be802cf404146d80b"
+    },
+    "questions": [
+      {
+        "newQuestion": {
+          "question": "Derive the probability of obtaining exactly two heads in three tosses of a fair coin.",
+          "answer": "3/8",
+          "options": [],
+          "matchingPairs": null
+        },
+        "questionId": "Q1",
+        "topicId": "t_74f7ec62-7b34-4089-a82f-1152fdb5a797",
+        "difficulty": "easy",
+        "questionType": "Proof/Derivation",
+        "points": 10,
+        "questionSample": "When throwing a six-sided die, what is the probability of getting an even number?",
+        "questionSampleSolution": "The sample space S = {1,2,3,4,5,6}. The event A = {2,4,6} are the even numbers. Number of outcomes in A is 3 and in S is 6. Therefore, the probability P(A) = n(A)/n(S) = 3/6 = 1/2 = 50%.",
+        "_id": "69ad6f73e802cf404146d823"
+      },
+      {
+        "newQuestion": {
+          "question": "When rolling a fair six-sided die, what is the probability of obtaining a number greater than 4?",
+          "answer": "1/3",
+          "options": [],
+          "matchingPairs": null
+        },
+        "questionId": "Q2",
+        "topicId": "t_74f7ec62-7b34-4089-a82f-1152fdb5a797",
+        "difficulty": "easy",
+        "questionType": "Numeric answer",
+        "points": 10,
+        "questionSample": "When throwing a six-sided die, what is the probability of getting an even number?",
+        "questionSampleSolution": "The sample space S = {1,2,3,4,5,6}. The event A = {2,4,6} are the even numbers. Number of outcomes in A is 3 and in S is 6. Therefore, the probability P(A) = n(A)/n(S) = 3/6 = 1/2 = 50%.",
+        "_id": "69ad6f73e802cf404146d824"
+      },
+      {
+        "newQuestion": {
+          "question": "Two fair spinners each have four faces numbered 1 through 4. When both spinners are spun simultaneously, the sum of the numbers shown is recorded. Which of the following gives the correct probabilities for (a) obtaining a sum of exactly 5 and (b) obtaining a sum greater than 5?",
+          "answer": "A",
+          "options": [
+            {
+              "key": "A",
+              "text": "(a) 1/4 and (b) 3/8",
+              "_id": "69ad7bb94feafb7ebb486880"
+            },
+            {
+              "key": "B",
+              "text": "(a) 1/8 and (b) 3/8",
+              "_id": "69ad7bb94feafb7ebb486881"
+            },
+            {
+              "key": "C",
+              "text": "(a) 1/4 and (b) 1/2",
+              "_id": "69ad7bb94feafb7ebb486882"
+            },
+            {
+              "key": "D",
+              "text": "(a) 1/4 and (b) 1/4",
+              "_id": "69ad7bb94feafb7ebb486883"
+            }
+          ],
+          "matchingPairs": null
+        },
+        "questionId": "Q3",
+        "topicId": "t_74f7ec62-7b34-4089-a82f-1152fdb5a797",
+        "difficulty": "medium",
+        "questionType": "Multiple choice",
+        "points": 10,
+        "questionSample": "Two fair spinners each have four faces numbered 1 to 4. The two spinners are spun together and the sum of the numbers indicated on the two spinners is recorded. Find the probability of the spinners indicating a sum of a) exactly 5, b) more than 5.",
+        "questionSampleSolution": "Total possible outcomes: 4 × 4 = 16. \na) Exactly 5: The pairs that sum to 5 are (1,4), (2,3), (3,2), (4,1). There are 4 such outcomes. So, P(exactly 5) = 4/16 = 1/4.\nb) More than 5: The sums greater than 5 are 6,7,8.\nSums of 6: (2,4), (3,3), (4,2) → 3 outcomes.\nSum of 7: (3,4), (4,3) → 2 outcomes.\nSum of 8: (4,4) → 1 outcome.\nTotal outcomes more than 5 = 3+2+1 = 6.\nSo, P(more than 5) = 6/16 = 3/8.",
+        "_id": "69ad6f73e802cf404146d825"
+      },
+      {
+        "newQuestion": {
+          "question": "A survey of 79 families found that 22 own cats, 27 own dogs, and 7 own both cats and dogs. For a randomly selected family, which of the following is the probability that the family owns exactly one type of pet (i.e., either a cat only or a dog only, but not both)?",
+          "answer": "C",
+          "options": [
+            {
+              "key": "A",
+              "text": "55/79",
+              "_id": "69ad7bbc4feafb7ebb486885"
+            },
+            {
+              "key": "B",
+              "text": "20/79",
+              "_id": "69ad7bbc4feafb7ebb486886"
+            },
+            {
+              "key": "C",
+              "text": "35/79",
+              "_id": "69ad7bbc4feafb7ebb486887"
+            },
+            {
+              "key": "D",
+              "text": "57/79",
+              "_id": "69ad7bbc4feafb7ebb486888"
+            }
+          ],
+          "matchingPairs": null
+        },
+        "questionId": "Q4",
+        "topicId": "t_74f7ec62-7b34-4089-a82f-1152fdb5a797",
+        "difficulty": "hard",
+        "questionType": "Multiple choice",
+        "points": 10,
+        "questionSample": "A survey of 79 families found that 22 own cats, 27 own dogs, and 7 own both cats and dogs. a) Draw a Venn diagram to represent this information. A family is chosen at random. Find the probability that the chosen family b) owns dogs only, c) does not own cats, d) does not own dogs or cats.",
+        "questionSampleSolution": "Given: n(S) = 79, n(C) = 22, n(D) = 27, n(C ∩ D) = 7.\n\nFor Venn diagram:\nCats only = 22 - 7 = 15\nDogs only = 27 - 7 = 20\nBoth Cats and Dogs = 7\nNeither cats nor dogs = 79 - (15 + 7 + 20) = 37\n\nb) Probability owns dogs only = 20/79.\nc) Probability does not own cats = (dogs only + neither) / 79 = (20 + 37)/79 = 57/79.\nd) Probability does not own dogs or cats = 37/79.",
+        "_id": "69ad6f73e802cf404146d826"
+      },
+      {
+        "newQuestion": {
+          "question": "Events A and B are independent, and P(A)=1/3 and P(B)=1/5. Find:\na) P(A ∩ B)\nb) P(A ∩ B')\nc) P(A' ∩ B')",
+          "answer": "1/15; 4/15; 8/15",
+          "options": [],
+          "matchingPairs": null
+        },
+        "questionId": "Q5",
+        "topicId": "t_2a62046f-0e24-4a41-b8b9-54c7dacaaccf",
+        "difficulty": "easy",
+        "questionType": "Short answer",
+        "points": 10,
+        "questionSample": "Events A and B are independent, and P(A) = 1/3 and P(B) = 1/5. Find:\na) P(A ∩ B)\nb) P(A ∩ B')\nc) P(A' ∩ B')",
+        "questionSampleSolution": "a) Since A and B are independent, P(A ∩ B) = P(A) × P(B) = (1/3) × (1/5) = 1/15.\nb) A and B' are also independent, so P(A ∩ B') = P(A) × P(B'). Since P(B') = 1 - P(B) = 1 - 1/5 = 4/5,\n   P(A ∩ B') = (1/3) × (4/5) = 4/15.\nc) A' and B' are independent, so P(A' ∩ B') = P(A') × P(B'). P(A') = 1 - P(A) = 2/3, and P(B') = 4/5.\n   Therefore, P(A' ∩ B') = (2/3) × (4/5) = 8/15.",
+        "_id": "69ad6f73e802cf404146d827"
+      },
+      {
+        "newQuestion": {
+          "question": "An urn contains 4 red and 6 blue marbles. If three marbles are drawn at random without replacement, what is the probability that the first marble is red, the second is blue, and the third is red?",
+          "answer": "A",
+          "options": [
+            {
+              "key": "A",
+              "text": "(4/10) × (6/9) × (3/8) = 1/10",
+              "_id": "69ad7bc34feafb7ebb48688c"
+            },
+            {
+              "key": "B",
+              "text": "(4/10) × (6/9) × (5/8) = 1/6",
+              "_id": "69ad7bc34feafb7ebb48688d"
+            },
+            {
+              "key": "C",
+              "text": "(4/10) × (5/9) × (3/8) = 1/12",
+              "_id": "69ad7bc34feafb7ebb48688e"
+            },
+            {
+              "key": "D",
+              "text": "(4/10) × (5/9) × (4/8) = 1/9",
+              "_id": "69ad7bc34feafb7ebb48688f"
+            }
+          ],
+          "matchingPairs": null
+        },
+        "questionId": "Q6",
+        "topicId": "t_2a62046f-0e24-4a41-b8b9-54c7dacaaccf",
+        "difficulty": "medium",
+        "questionType": "Multiple choice",
+        "points": 10,
+        "questionSample": "An urn contains 6 white and 9 black balls. If 4 balls are to be randomly selected without replacement, what is the probability that the first 2 selected are white and the last 2 black?",
+        "questionSampleSolution": "The probability that the first ball is white is 6/15. The second ball white is 5/14 (since one white is taken, 5 white left, 14 total).\nThe third ball being black is 9/13 (all black are still there, 13 total balls left).\nThe fourth ball black is 8/12 (one black removed, 8 black left, 12 total).\nMultiply these probabilities:\n(6/15) × (5/14) × (9/13) × (8/12) = (6×5×9×8) / (15×14×13×12) = 2160 / 32760 = 1/15.\nSo, the probability is 1/15.",
+        "_id": "69ad6f73e802cf404146d828"
+      },
+      {
+        "newQuestion": {
+          "question": "In a university foundation programme, 36% of students like biology, and 22% of those who like biology also like chemistry. Additionally, 30% of all students like chemistry. What is the probability that a randomly selected student likes both biology and chemistry?",
+          "answer": "A",
+          "options": [
+            {
+              "key": "A",
+              "text": "0.0792 (7.92%)",
+              "_id": "69ad7bc64feafb7ebb486891"
+            },
+            {
+              "key": "B",
+              "text": "0.072 (7.2%)",
+              "_id": "69ad7bc64feafb7ebb486892"
+            },
+            {
+              "key": "C",
+              "text": "0.30 (30%)",
+              "_id": "69ad7bc64feafb7ebb486893"
+            },
+            {
+              "key": "D",
+              "text": "0.36 (36%)",
+              "_id": "69ad7bc64feafb7ebb486894"
+            }
+          ],
+          "matchingPairs": null
+        },
+        "questionId": "Q7",
+        "topicId": "t_2a62046f-0e24-4a41-b8b9-54c7dacaaccf",
+        "difficulty": "hard",
+        "questionType": "Multiple choice",
+        "points": 10,
+        "questionSample": "In the NU Foundation Programme (NUFYP), 36% of students like biology, and 22% of those who like biology also like chemistry. In addition, 30% of students like chemistry.\nFind:\na) The probability that a randomly selected student likes both biology and chemistry.\nb) The probability that a randomly selected student likes biology given that he likes chemistry.",
+        "questionSampleSolution": "a) Probability that a student likes both biology and chemistry is:\nP(B and C) = P(B) × P(C|B) = 0.36 × 0.22 = 0.0792.\n\nb) The probability that a student likes biology given that he likes chemistry is:\nP(B|C) = P(B and C) / P(C) = 0.0792 / 0.30 = 0.264.\n\nThus,\na) P(B and C) = 0.0792.\nb) P(B|C) = 0.264.",
+        "_id": "69ad6f73e802cf404146d829"
+      },
+      {
+        "newQuestion": {
+          "question": "Expand the binomial (x + 3)^3.",
+          "answer": "x^3 + 9x^2 + 27x + 27",
+          "options": [],
+          "matchingPairs": null
+        },
+        "questionId": "Q8",
+        "topicId": "t_064b9918-e5e9-4705-b68e-0bbbacc3ef66",
+        "difficulty": "easy",
+        "questionType": "Short answer",
+        "points": 10,
+        "questionSample": "",
+        "questionSampleSolution": "",
+        "_id": "69ad6f73e802cf404146d82a"
+      },
+      {
+        "newQuestion": {
+          "question": "In the expansion of (1 + 2x)^5, the coefficient of the term containing x^3 is 80.",
+          "answer": "True",
+          "options": [],
+          "matchingPairs": null
+        },
+        "questionId": "Q9",
+        "topicId": "t_064b9918-e5e9-4705-b68e-0bbbacc3ef66",
+        "difficulty": "medium",
+        "questionType": "True/False",
+        "points": 10,
+        "questionSample": "",
+        "questionSampleSolution": "",
+        "_id": "69ad6f73e802cf404146d82b"
+      },
+      {
+        "newQuestion": {
+          "question": "What is the coefficient of the term x^5 y^3 in the expansion of (2x + 3y)^8?",
+          "answer": "48384",
+          "options": [],
+          "matchingPairs": null
+        },
+        "questionId": "Q10",
+        "topicId": "t_064b9918-e5e9-4705-b68e-0bbbacc3ef66",
+        "difficulty": "hard",
+        "questionType": "Short answer",
+        "points": 10,
+        "questionSample": "",
+        "questionSampleSolution": "",
+        "_id": "69ad6f73e802cf404146d82c"
+      }
+    ],
+    "status": "Completed",
+    "topics": [
+      {
+        "topicId": "t_74f7ec62-7b34-4089-a82f-1152fdb5a797",
+        "title": "Probability 1",
+        "description": "",
+        "materials": [
+          "f_c0nS5yAHM2tTi3C3ARB2X-pS"
+        ],
+        "easySampleQuestion": "When throwing a six-sided die, what is the probability of getting an even number?",
+        "easySampleQuestionSolution": "The sample space S = {1,2,3,4,5,6}. The event A = {2,4,6} are the even numbers. Number of outcomes in A is 3 and in S is 6. Therefore, the probability P(A) = n(A)/n(S) = 3/6 = 1/2 = 50%.",
+        "easySampleQuestionSource": "extracted_with_solution",
+        "mediumSampleQuestion": "Two fair spinners each have four faces numbered 1 to 4. The two spinners are spun together and the sum of the numbers indicated on the two spinners is recorded. Find the probability of the spinners indicating a sum of a) exactly 5, b) more than 5.",
+        "mediumSampleQuestionSolution": "Total possible outcomes: 4 × 4 = 16. \na) Exactly 5: The pairs that sum to 5 are (1,4), (2,3), (3,2), (4,1). There are 4 such outcomes. So, P(exactly 5) = 4/16 = 1/4.\nb) More than 5: The sums greater than 5 are 6,7,8.\nSums of 6: (2,4), (3,3), (4,2) → 3 outcomes.\nSum of 7: (3,4), (4,3) → 2 outcomes.\nSum of 8: (4,4) → 1 outcome.\nTotal outcomes more than 5 = 3+2+1 = 6.\nSo, P(more than 5) = 6/16 = 3/8.",
+        "mediumSampleQuestionSource": "extracted_with_solution",
+        "hardSampleQuestion": "A survey of 79 families found that 22 own cats, 27 own dogs, and 7 own both cats and dogs. a) Draw a Venn diagram to represent this information. A family is chosen at random. Find the probability that the chosen family b) owns dogs only, c) does not own cats, d) does not own dogs or cats.",
+        "hardSampleQuestionSolution": "Given: n(S) = 79, n(C) = 22, n(D) = 27, n(C ∩ D) = 7.\n\nFor Venn diagram:\nCats only = 22 - 7 = 15\nDogs only = 27 - 7 = 20\nBoth Cats and Dogs = 7\nNeither cats nor dogs = 79 - (15 + 7 + 20) = 37\n\nb) Probability owns dogs only = 20/79.\nc) Probability does not own cats = (dogs only + neither) / 79 = (20 + 37)/79 = 57/79.\nd) Probability does not own dogs or cats = 37/79.",
+        "hardSampleQuestionSource": "extracted_with_solution",
+        "_id": "69ad6f6de802cf404146d81c"
+      },
+      {
+        "topicId": "t_2a62046f-0e24-4a41-b8b9-54c7dacaaccf",
+        "title": "Probability 2",
+        "description": "",
+        "materials": [
+          "f_3qWWkqgDfN7mcrVUlop0HFqU",
+          "f_VTKSMDUmmlS7tiVjTZnLusDU"
+        ],
+        "easySampleQuestion": "Events A and B are independent, and P(A) = 1/3 and P(B) = 1/5. Find:\na) P(A ∩ B)\nb) P(A ∩ B')\nc) P(A' ∩ B')",
+        "easySampleQuestionSolution": "a) Since A and B are independent, P(A ∩ B) = P(A) × P(B) = (1/3) × (1/5) = 1/15.\nb) A and B' are also independent, so P(A ∩ B') = P(A) × P(B'). Since P(B') = 1 - P(B) = 1 - 1/5 = 4/5,\n   P(A ∩ B') = (1/3) × (4/5) = 4/15.\nc) A' and B' are independent, so P(A' ∩ B') = P(A') × P(B'). P(A') = 1 - P(A) = 2/3, and P(B') = 4/5.\n   Therefore, P(A' ∩ B') = (2/3) × (4/5) = 8/15.",
+        "easySampleQuestionSource": "extracted_and_solved",
+        "mediumSampleQuestion": "An urn contains 6 white and 9 black balls. If 4 balls are to be randomly selected without replacement, what is the probability that the first 2 selected are white and the last 2 black?",
+        "mediumSampleQuestionSolution": "The probability that the first ball is white is 6/15. The second ball white is 5/14 (since one white is taken, 5 white left, 14 total).\nThe third ball being black is 9/13 (all black are still there, 13 total balls left).\nThe fourth ball black is 8/12 (one black removed, 8 black left, 12 total).\nMultiply these probabilities:\n(6/15) × (5/14) × (9/13) × (8/12) = (6×5×9×8) / (15×14×13×12) = 2160 / 32760 = 1/15.\nSo, the probability is 1/15.",
+        "mediumSampleQuestionSource": "extracted_and_solved",
+        "hardSampleQuestion": "In the NU Foundation Programme (NUFYP), 36% of students like biology, and 22% of those who like biology also like chemistry. In addition, 30% of students like chemistry.\nFind:\na) The probability that a randomly selected student likes both biology and chemistry.\nb) The probability that a randomly selected student likes biology given that he likes chemistry.",
+        "hardSampleQuestionSolution": "a) Probability that a student likes both biology and chemistry is:\nP(B and C) = P(B) × P(C|B) = 0.36 × 0.22 = 0.0792.\n\nb) The probability that a student likes biology given that he likes chemistry is:\nP(B|C) = P(B and C) / P(C) = 0.0792 / 0.30 = 0.264.\n\nThus,\na) P(B and C) = 0.0792.\nb) P(B|C) = 0.264.",
+        "hardSampleQuestionSource": "extracted_and_solved",
+        "_id": "69ad6f6de802cf404146d81d"
+      },
+      {
+        "topicId": "t_064b9918-e5e9-4705-b68e-0bbbacc3ef66",
+        "title": "Binomial Expansion",
+        "description": "",
+        "materials": [],
+        "easySampleQuestion": "",
+        "easySampleQuestionSolution": "",
+        "easySampleQuestionSource": "",
+        "mediumSampleQuestion": "",
+        "mediumSampleQuestionSolution": "",
+        "mediumSampleQuestionSource": "",
+        "hardSampleQuestion": "",
+        "hardSampleQuestionSolution": "",
+        "hardSampleQuestionSource": "",
+        "_id": "69ad6f6de802cf404146d81e"
+      }
+    ]
+  }
+}

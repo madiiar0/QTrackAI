@@ -34,6 +34,28 @@ const questionsSchema = new mongoose.Schema({
     points: Number,
     questionSample: {type: String, default: ""},
     questionSampleSolution: {type: String, default: ""},
+    newQuestion: {
+        question: {type: String, default: ""},
+        answer: {type: String, default: ""},
+        options: {
+            type: [{
+                key: {type: String, default: ""},
+                text: {type: String, default: ""}
+            }],
+            default: []
+        },
+        matchingPairs: {
+            left: {type: [String], default: []},
+            right: {type: [String], default: []},
+            correctMapping: {
+                type: [{
+                    left: {type: String, default: ""},
+                    right: {type: String, default: ""}
+                }],
+                default: []
+            }
+        }
+    },
 })
 
 const promptSchema = new mongoose.Schema({

@@ -2,13 +2,92 @@ import GenerationJobModel from "../models/generationJob.model.js";
 import PromptModel from "../models/prompt.model.js";
 import FileModel from "../models/files.model.js";
 import fsp from "fs/promises";
+import path from "path";
 import {
+  GENERATE_EXAM_SYSTEM_PROMPT,
+  GENERATE_EXAM_USER_PROMPT,
   SAMPLE_MODEL,
   SAMPLE_SYSTEM_PROMPT,
   SAMPLE_USER_PROMPT,
 } from "../samples/openaiPrompts.js";
+import {
+  buildK2UserPayload,
+  buildQuestionBatches,
+  parseGeneratedQuestions,
+} from "../utils/generateExamBatch.helpers.js";
+import { buildExamPdfBuffer } from "../utils/examPdf.helpers.js";
+import { saveFileMetadata } from "../services/files.service.js";
+import { UPLOAD_FILE_PATH } from "../middleware/uploadFile.js";
+const getEmptyGeneratedQuestion = () => ({
+  question: "",
+  answer: "",
+  options: [],
+  matchingPairs: {
+    left: [],
+    right: [],
+    correctMapping: [],
+  },
+});
 
-const sleep = (ms = 500) => new Promise((resolve) => setTimeout(resolve, ms));
+const extractFirstJsonObject = (text = "") => {
+  if (typeof text !== "string" || !text.trim()) return "";
+
+  let start = text.indexOf("{");
+  while (start !== -1) {
+    let depth = 0;
+    let inString = false;
+    let escaped = false;
+
+    for (let i = start; i < text.length; i += 1) {
+      const char = text[i];
+
+      if (inString) {
+        if (escaped) {
+          escaped = false;
+        } else if (char === "\\") {
+          escaped = true;
+        } else if (char === "\"") {
+          inString = false;
+        }
+        continue;
+      }
+
+      if (char === "\"") {
+        inString = true;
+        continue;
+      }
+
+      if (char === "{") depth += 1;
+      if (char === "}") {
+        depth -= 1;
+        if (depth === 0) {
+          const candidate = text.slice(start, i + 1);
+          try {
+            JSON.parse(candidate);
+            return candidate;
+          } catch (_) {
+            break;
+          }
+        }
+      }
+    }
+
+    start = text.indexOf("{", start + 1);
+  }
+
+  return "";
+};
+
+const extractK2JsonContent = (rawContent = "") => {
+  if (typeof rawContent !== "string") return "";
+
+  const thinkSplit = rawContent.split("</think>");
+  const preferredBlock = thinkSplit.length > 1 ? thinkSplit[thinkSplit.length - 1] : rawContent;
+  const jsonFromPreferred = extractFirstJsonObject(preferredBlock);
+  if (jsonFromPreferred) return jsonFromPreferred;
+
+  return extractFirstJsonObject(rawContent);
+};
 
 const updateGenerationJobStatus = async (jobId, payload = {}) => {
   await GenerationJobModel.findByIdAndUpdate(
@@ -221,12 +300,178 @@ const sampleFromDocuments = async (jobId) => {
   await prompt.save();
 };
 
-const generateExamWithAI = async () => {
-  await sleep();
+const generateExamWithAI = async (jobId) => {
+  const job = await GenerationJobModel.findById(jobId).lean();
+  if (!job?.promptId || !job?.ownerId) return;
+
+  const prompt = await PromptModel.findOne({
+    _id: String(job.promptId),
+    ownerId: String(job.ownerId),
+  });
+  if (!prompt) return;
+
+  const questions = Array.isArray(prompt.questions) ? prompt.questions : [];
+  if (questions.length === 0) return;
+
+  const topics = Array.isArray(prompt.topics) ? prompt.topics : [];
+  const topicsById = new Map(topics.map((topic) => [String(topic?.topicId || ""), topic]));
+  const batches = buildQuestionBatches(questions);
+  if (batches.length === 0) return;
+
+  const k2ApiKey = process.env.K2_API_KEY;
+  let doneCount = 0;
+
+  for (const batch of batches) {
+    if (!Array.isArray(batch?.questions) || batch.questions.length === 0) continue;
+
+    doneCount += 1;
+    const batchProgress = 50 + Math.floor((doneCount / batches.length) * 35);
+    await updateGenerationJobStatus(jobId, {
+      progress: Math.min(89, batchProgress),
+      currentStep: "generateExamWithAI",
+    });
+
+    if (!k2ApiKey) {
+      for (const question of batch.questions) {
+        question.newQuestion = getEmptyGeneratedQuestion();
+      }
+      continue;
+    }
+
+    const topic = topicsById.get(String(batch.topicId || ""));
+    const userPayload = buildK2UserPayload({ batch, topic });
+    const userPrompt = `${GENERATE_EXAM_USER_PROMPT}\n\n${JSON.stringify(userPayload)}`;
+
+    try {
+      const response = await fetch("https://api.k2think.ai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${k2ApiKey}`,
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          model: "MBZUAI-IFM/K2-Think-v2",
+          messages: [
+            {
+              role: "system",
+              content: GENERATE_EXAM_SYSTEM_PROMPT,
+            },
+            {
+              role: "user",
+              content: userPrompt,
+            },
+          ],
+          stream: false,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("K2 generate request failed", {
+          topicId: batch.topicId,
+          difficulty: batch.difficulty,
+          status: response.status,
+          body: errorText,
+        });
+        for (const question of batch.questions) {
+          question.newQuestion = getEmptyGeneratedQuestion();
+        }
+        continue;
+      }
+
+      const payload = await response.json();
+      const modelContent = payload?.choices?.[0]?.message?.content;
+      let rawContent = "";
+      if (typeof modelContent === "string") {
+        rawContent = modelContent;
+      } else if (Array.isArray(modelContent)) {
+        rawContent = modelContent
+          .map((item) => (typeof item?.text === "string" ? item.text : ""))
+          .join("\n");
+      } else {
+        rawContent = payload?.choices?.[0]?.text || "";
+      }
+
+      const extractedJson = extractK2JsonContent(rawContent);
+      const parsedResult = parseGeneratedQuestions(extractedJson, batch.questions);
+      if (!parsedResult.ok) {
+        console.error("K2 generate validation failed", {
+          topicId: batch.topicId,
+          difficulty: batch.difficulty,
+          error: parsedResult.error,
+        });
+        console.error("K2 raw model output (invalid JSON/path):", rawContent);
+        console.error("K2 extracted JSON candidate:", extractedJson);
+        console.error("K2 full response payload:", payload);
+        for (const question of batch.questions) {
+          question.newQuestion = getEmptyGeneratedQuestion();
+        }
+        continue;
+      }
+
+      for (const question of batch.questions) {
+        const questionId = String(question?.questionId || "");
+        question.newQuestion =
+          parsedResult.map.get(questionId) || getEmptyGeneratedQuestion();
+      }
+    } catch (error) {
+      console.error("K2 generate parsing failed", {
+        topicId: batch.topicId,
+        difficulty: batch.difficulty,
+        message: error?.message,
+      });
+      for (const question of batch.questions) {
+        question.newQuestion = getEmptyGeneratedQuestion();
+      }
+    }
+  }
+
+  prompt.markModified("questions");
+  await prompt.save();
 };
 
-const saveGeneratedExamFile = async () => {
-  await sleep();
+const saveGeneratedExamFile = async (jobId) => {
+  const job = await GenerationJobModel.findById(jobId).lean();
+  if (!job?.promptId || !job?.ownerId) return null;
+
+  const prompt = await PromptModel.findOne({
+    _id: String(job.promptId),
+    ownerId: String(job.ownerId),
+  }).lean();
+  if (!prompt) return null;
+
+  const pdfBuffer = buildExamPdfBuffer(prompt);
+  const safeTitle = String(prompt?.exam?.title || "generated_exam")
+    .trim()
+    .replace(/[^a-zA-Z0-9_-]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .slice(0, 50) || "generated_exam";
+  const filename = `${Date.now()}_${Math.random().toString(16).slice(2)}.pdf`;
+  const storedPath = path.resolve(UPLOAD_FILE_PATH, filename);
+
+  await fsp.writeFile(storedPath, pdfBuffer);
+
+  try {
+    const fileDoc = await saveFileMetadata({
+      ownerId: job.ownerId,
+      storedPath,
+      originalName: `${safeTitle}.pdf`,
+      mimeType: "application/pdf",
+      sizeBytes: pdfBuffer.length,
+    });
+
+    await GenerationJobModel.findByIdAndUpdate(jobId, {
+      $set: { resultFileId: fileDoc.publicId },
+    });
+
+    return fileDoc.publicId;
+  } catch (error) {
+    try {
+      await fsp.unlink(storedPath);
+    } catch (_) {}
+    throw error;
+  }
 };
 
 const runGenerationPipeline = async (jobId) => {
@@ -243,19 +488,20 @@ const runGenerationPipeline = async (jobId) => {
       progress: 50,
       currentStep: "generateExamWithAI",
     });
-    await generateExamWithAI();
+    await generateExamWithAI(jobId);
 
     await updateGenerationJobStatus(jobId, {
       progress: 90,
       currentStep: "saveGeneratedExamFile",
     });
-    await saveGeneratedExamFile();
+    const resultFileId = await saveGeneratedExamFile(jobId);
 
     await updateGenerationJobStatus(jobId, {
       status: "completed",
       progress: 100,
       currentStep: "completed",
       error: null,
+      resultFileId: resultFileId || null,
     });
   } catch (error) {
     await updateGenerationJobStatus(jobId, {
@@ -337,6 +583,7 @@ export const generateStatusGet = async (req, res) => {
         progress: job.progress,
         currentStep: job.currentStep,
         error: job.error,
+        resultFileId: job.resultFileId || null,
         createdAt: job.createdAt,
         updatedAt: job.updatedAt,
       },

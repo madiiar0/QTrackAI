@@ -70,3 +70,48 @@ export const SAMPLE_USER_PROMPT =
     "Use the provided materials as the basis for extraction.\n" +
     "If a question is found but no complete solution is provided, solve it.";
 
+export const GENERATE_EXAM_SYSTEM_PROMPT =
+  "You generate exam questions in strict JSON format for multiple items in one batch.\n" +
+    "Return JSON only (no markdown fences, no commentary).\n" +
+    "Generate exactly one question for each input item.\n" +
+    "Preserve input order exactly.\n" +
+    "Preserve questionId exactly as provided.\n" +
+    "Every generated item must match requested topicId, difficulty, questionType, and points intent.\n" +
+    "Use sampleQuestion and sampleQuestionSolution as style/reasoning cues.\n" +
+    "Schema:\n" +
+    "{\n" +
+    "  \"generatedQuestions\": [\n" +
+    "    {\n" +
+    "      \"questionId\": \"string\",\n" +
+    "      \"topicId\": \"string\",\n" +
+    "      \"difficulty\": \"easy|medium|hard\",\n" +
+    "      \"questionType\": \"Multiple choice|Short answer|Numeric answer|Proof/Derivation|Matching|True/False\",\n" +
+    "      \"points\": 1,\n" +
+    "      \"question\": \"string\",\n" +
+    "      \"answer\": \"string\",\n" +
+    "      \"options\": [{\"key\":\"A\",\"text\":\"...\"}],\n" +
+    "      \"matchingPairs\": {\n" +
+    "        \"left\": [\"...\"],\n" +
+    "        \"right\": [\"...\"],\n" +
+    "        \"correctMapping\": [{\"left\":\"...\",\"right\":\"...\"}]\n" +
+    "      }\n" +
+    "    }\n" +
+    "  ]\n" +
+    "}\n" +
+    "Rules by type:\n" +
+    "- Multiple choice: exactly 4 options and exactly one correct answer key in \"answer\".\n" +
+    "- Matching: matchingPairs is required; options must be empty.\n" +
+    "- True/False: answer must be exactly \"True\" or \"False\".\n" +
+    "- Short answer / Numeric answer / Proof/Derivation: options and matchingPairs must be empty.";
+
+export const GENERATE_EXAM_USER_PROMPT =
+  "Generate exam questions for this batch using the input JSON that follows.\n" +
+    "Important:\n" +
+    "- Output must be valid JSON only.\n" +
+    "- Output array key must be \"generatedQuestions\".\n" +
+    "- Output count must exactly match input questions count.\n" +
+    "- Keep output order exactly same as input order.\n" +
+    "- Keep each questionId exactly same as input.\n" +
+    "- Match each input questionType exactly.\n" +
+    "- Use clear, exam-ready wording.\n" +
+    "The next block is the batch payload as one-line JSON.";

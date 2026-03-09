@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import MainPage from "./pages/MainPage";
 import Quiz from "./pages/Quiz";
+import Collection from "./pages/Collection";
 
 const App = () => {
     return (
@@ -85,6 +86,14 @@ const App = () => {
                     element={
                         <ProtectedRoute>
                             <Quiz />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/collection"
+                    element={
+                        <ProtectedRoute>
+                            <Collection />
                         </ProtectedRoute>
                     }
                 />
